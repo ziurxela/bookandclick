@@ -29,7 +29,7 @@ class UserProfile extends \yii\db\ActiveRecord
     public $picture;
 
     public function behaviors()
-    {
+    { 
         return [
             'picture' => [
                 'class' => UploadBehavior::className(),
@@ -104,7 +104,7 @@ class UserProfile extends \yii\db\ActiveRecord
     }
 
     public function getAvatar($default = null)
-    {
+    { 
         return $this->avatar_path
             ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
             : $default;

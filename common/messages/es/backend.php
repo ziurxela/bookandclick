@@ -43,6 +43,7 @@ return [
     'Active' => 'Activa',
     'Application timeline' => 'Línea de Tiempo de la Aplicación',
     'Are you sure you want to delete this item?' => '¿Estás seguro que quieres borrar este artículo?',
+    'Are you sure you want to delete this user?' => '¿Estás seguro que quieres borrar este usuario?',
     'Are you sure you want to flush this cache?' => '¿Estás seguro que quieres vaciar este caché?',
     'Article Categories' => 'Categorías de Artículo',
     'Articles' => 'Artículos',

@@ -314,12 +314,12 @@ class User extends ActiveRecord implements IdentityInterface
             ->select('nombre')
             ->from('click_clients')
             ->all();
-
+        
         foreach($query as $list){
             $c[]=$list['nombre'];
         }
 
-        $clients = array('Boock&click');
+        $clients = array('Book&click');
         
         for($i = 0; $i < count($c); $i++){
             array_push($clients, $c[$i]);                                                                  

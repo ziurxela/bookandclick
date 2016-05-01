@@ -104,8 +104,7 @@ class UserForm extends Model
      */
     public function save()
     {  
-        echo '<script language="javascript">alert("'. Yii::$app->user->identity->client .'");</script>'; 
-
+        
         if ($this->validate()) {
             $model = $this->getModel();
             $isNewRecord = $model->getIsNewRecord();
@@ -131,7 +130,19 @@ class UserForm extends Model
                     $auth->assign($auth->getRole($role), $model->getId());
                 }
             }
+/*  Creación de ficheros para el calendario          
+            $directorioCalendar = "../../common/calendar/". Yii::$app->user->identity->client."/". $model->getId();
+            
+            if(!is_dir($directorioCalendar)){
+                @mkdir($directorioCalendar, 0700);
+            }else{
+                throw new NotFoundHttpException('Ya existe ese directorio'); 
+            }  
 
+            $ourFileName = $directorioCalendar. "/" . date("Y"). date("m") .".json.php";
+            $ourFileHandle = fopen($ourFileName, 'w') or die("can't open file");
+            fclose($ourFileHandle);
+  */
             return !$model->hasErrors();
         }
         return null;
