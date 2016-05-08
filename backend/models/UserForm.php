@@ -130,6 +130,7 @@ class UserForm extends Model
                     $auth->assign($auth->getRole($role), $model->getId());
                 }
             }
+            
 /*  Creación de ficheros para el calendario          
             $directorioCalendar = "../../common/calendar/". Yii::$app->user->identity->client."/". $model->getId();
             

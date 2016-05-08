@@ -56,6 +56,7 @@ return [
     'Count' => 'Total',
     'Create' => 'Crear',
     'Create {modelClass}' => 'Crear {modelClass}',
+    'Create User' => 'Crear Usuario',
     'DB Type' => 'Tipo de Base de Datos',
     'DB Version' => 'Versión de Base de Datos',
     'Delete' => 'Borrar',
