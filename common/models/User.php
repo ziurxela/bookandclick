@@ -116,6 +116,7 @@ class User extends ActiveRecord implements IdentityInterface
             'created_at' => Yii::t('common', 'Created at'),
             'updated_at' => Yii::t('common', 'Updated at'),
             'logged_at' => Yii::t('common', 'Last login'),
+            'roles' => yii::t('common','Roles'),
         ];
     }
 
@@ -340,6 +341,4 @@ class User extends ActiveRecord implements IdentityInterface
            
         return $c[0];
     }
-
-
 }

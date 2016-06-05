@@ -172,6 +172,18 @@ $bundle = BackendAsset::register($this);
                             'visible'=>Yii::$app->user->can('manager'),
                         ],
                         [
+                            'label'=>Yii::t('backend', 'Clients'),
+                            'icon'=>'<i class="fa fa-cubes"></i>',
+                            'url'=>['/client/index'],
+                            'visible'=>Yii::$app->user->can('administrator'),
+                        ],
+                         [
+                            'label'=>Yii::t('backend', 'Planes'),
+                            'icon'=>'<i class="fa fa-paper-plane"></i>',
+                            'url'=>['/planes/index'],
+                            'visible'=>Yii::$app->user->can('administrator'),
+                        ],
+                        [
                             'label'=>Yii::t('backend', 'Other'),
                             'url' => '#',
                             'icon'=>'<i class="fa fa-cogs"></i>',
@@ -205,6 +217,16 @@ $bundle = BackendAsset::register($this);
                                     'badgeBgClass'=>'label-danger',
                                 ],
                             ]
+                        ],
+                        [
+                            'label'=>Yii::t('backend', 'My Account'),
+                            'options' => ['class' => 'header']
+                        ],
+                        [
+                            'label'=>Yii::t('backend', 'My Dates'),
+                            'icon'=>'<i class="fa fa-cube"></i>',
+                            'url'=>['/client/view?id='. Yii::$app->user->identity->client],
+                            'visible'=>Yii::$app->user->can('manager'),
                         ]
                     ]
                 ]) ?>

@@ -1,22 +1,22 @@
 <?php
 
-use common\models\User;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\UserSearch */
+/* @var $searchModel backend\models\search\PlanesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Users');
+$this->title = Yii::t('backend', 'Planes');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index">
+<div class="planes-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'User',
+    'modelClass' => 'Planes',
 ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
@@ -24,18 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
             'id',
-            'username',
-            'email:email',
-            [
-                'class' => \common\grid\EnumColumn::className(),
-                'attribute' => 'status',
-                'enum' => User::getStatuses(),
-                'filter' => User::getStatuses()
-            ],
-            'created_at:datetime',
-            'logged_at:datetime',
-            // 'updated_at',
+            'nombre',
+            'nCalendarios',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

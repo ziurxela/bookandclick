@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
 /* @var $roles yii\rbac\Role[] */
-if (((Yii::$app->user->identity->id) === $model->client) || (Yii::$app->user->can('administrator'))){
+if (((Yii::$app->user->identity->client) === $model->client) || (Yii::$app->user->can('administrator'))){
 
 $this->title = Yii::t('backend', 'Update {modelClass}: ', ['modelClass' => 'User']) . ' ' . $model->username;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Users'), 'url' => ['index']];

@@ -20,31 +20,62 @@ $this->params['breadcrumbs'][] = $this->title;
         'modelClass' => 'User',
         ]), ['create'], ['class' => 'btn btn-success']); ?>
     </p>
-    <?php echo GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            'id',
-            [
-                'class' => \common\grid\EnumColumn::className(),
-                'attribute' =>'client',
-                'enum' => User::getClientName(),
-                'filter' => User::getClientName()
-            ],
-            'username',
-            'email:email',
-            [
-                'class' => \common\grid\EnumColumn::className(),
-                'attribute' => 'status',
-                'enum' => User::getStatuses(),
-                'filter' => User::getStatuses()
-            ],
-            //'created_at:datetime',
-            //'logged_at:datetime',
-            // 'updated_at',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
+    <?php 
+        if (Yii::$app->user->can('administrator')){
+            echo GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    'id',
+                    [
+                        'class' => \common\grid\EnumColumn::className(),
+                        'attribute' =>'client',
+                        'enum' => User::getClientName(),
+                        'filter' => User::getClientName()
+                    ],
+                    'username',
+                    'email:email',
+                    [
+                        'class' => \common\grid\EnumColumn::className(),
+                        'attribute' => 'status',
+                        'enum' => User::getStatuses(),
+                        'filter' => User::getStatuses()
+                    ],
+                    
+                    //'created_at:datetime',
+                    //'logged_at:datetime',
+                    // 'updated_at',
+                  
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]);
+        }else{
+            echo GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    [
+                        'class' => \common\grid\EnumColumn::className(),
+                        'attribute' =>'client',
+                        'enum' => User::getClientName(),
+                        'filter' => User::getClientName()
+                    ],
+                    'username',
+                    'email:email',
+                    [
+                        'class' => \common\grid\EnumColumn::className(),
+                        'attribute' => 'status',
+                        'enum' => User::getStatuses(),
+                        'filter' => User::getStatuses()
+                    ],
+                    //'created_at:datetime',
+                    //'logged_at:datetime',
+                    // 'updated_at',
+                    
+                    ['class' => 'yii\grid\ActionColumn'],
+                ],
+            ]); 
+        }
+    ?>
 
 </div>

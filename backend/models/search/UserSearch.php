@@ -38,10 +38,10 @@ class UserSearch extends User
      */
     public function search($params)
     {
-        if (Yii::$app->user->identity->id == 1){
+        if (Yii::$app->user->can('administrator')){
             $query = User::find();
         }else{
-            $query = User::find()->where(['client' => Yii::$app->user->identity->id]);
+            $query = User::find()->where(['client' => Yii::$app->user->identity->client]);
         }
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
