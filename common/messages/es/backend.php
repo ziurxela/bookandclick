@@ -132,6 +132,7 @@ return [
     'Save' => 'Guardar',
     'Search' => 'Buscar',
     'Select cache' => 'Seleccionar caché',
+    'Settings' => 'Ajustes',
     'Sign In' => 'Registrarse',
     'Sign me in' => 'Registrarme',
     'Software' => 'Software',

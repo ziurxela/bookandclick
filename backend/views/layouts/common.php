@@ -138,6 +138,11 @@ $bundle = BackendAsset::register($this);
                             'icon'=>'<i class="glyphicon glyphicon-calendar"></i>',
                             'url'=>['/calendar/index'],
                         ],
+                         [   
+                            'label'=>Yii::t('backend','Settings'),
+                            'icon'=>'<i class="glyphicon glyphicon-calendar"></i>',
+                            'url'=>['/calendar/settings'],
+                        ],
                         [
                             'label'=>Yii::t('backend', 'Timeline'),
                             'icon'=>'<i class="fa fa-bar-chart-o"></i>',

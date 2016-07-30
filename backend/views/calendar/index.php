@@ -1,5 +1,26 @@
-	<div class="page-header">
 
+
+	<ul class="nav nav-tabs">
+		
+		<?php 
+		for ($i=0; $i < 3; $i++) { 
+			if ($i == 0){ ?>
+				<li class="active">
+		<?php }else{ ?>
+				<li>	
+		<?php } ?>
+				<a data-toggle="tab" href= <?php echo '"#calendar' . $i . '"'; ?> ><?php echo "Calendario ". ($i + 1); ?></a></li>
+  <?php } ?>
+	</ul>
+
+ <div class="tab-content">
+ 	<?php for ($x=0; $x < 3; $x++) { 
+ 	 		if ($x == 0){ ?>
+  				<div class="tab-pane fade in active" id= <?php echo '"calendar' . $x . '"'; ?> >
+  			<?php }else{ ?>
+  				<div class="tab-pane fade" id=<?php echo '"calendar' . $x . '"'; ?> >
+  			<?php }?>
+      <div class="page-header">
 		<div class="pull-right form-inline">
 			<div class="btn-group">
 				<button class="btn btn-primary" data-calendar-nav="prev"><< </button>
@@ -15,13 +36,13 @@
 		</div>
 
 		<h3></h3>
-		<small>To see example with events navigate to march 2013</small>
 	</div>
 
 	<div class="row">
-		<div class="col-md-9">
-			<div id="calendar"></div>
+		<div class="col-md-10 col-md-offset-1">
+			<div class="calendar"></div>
 		</div>
+		<!--
 		<div class="col-md-3">
 			<div class="row">
 				<select id="first_day" class="form-control">
@@ -51,6 +72,7 @@
 			<small>This list is populated with events dynamically</small>
 			<ul id="eventlist" class="nav nav-list"></ul>
 		</div>
+		-->
 	</div>
 
 	<div class="clearfix"></div>
@@ -73,3 +95,8 @@
 			</div>
 		</div>
 	</div>
+    </div>
+  	<?php } ?>
+  </div>
+ 
+	

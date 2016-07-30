@@ -16,16 +16,14 @@ use yii\filters\VerbFilter;
  */
 class CalendarController extends Controller{
 
- public function actionIndex(){
-    	$msg = "ola k ase";
-        //$searchModel = new ArticleSearch();
-        //$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        //$dataProvider->sort = [
-        //    'defaultOrder'=>['published_at'=>SORT_DESC]
-        //];
-        return $this->render('index', [
-            'msg' => $msg
-        ]);
+    public function actionIndex(){
+        return $this->render('index');
     }
 
+    public function actionSettings()
+    {
+        return $this->render('settings', [
+            //'model' => $this->findModel($id),
+        ]);
+    }
 }
