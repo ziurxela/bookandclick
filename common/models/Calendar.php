@@ -27,7 +27,6 @@ class Calendar extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['idCliente'], 'required'],
             [['idCliente'], 'integer'],
             [['nombre'], 'string', 'max' => 255],
         ];
@@ -43,5 +42,29 @@ class Calendar extends \yii\db\ActiveRecord
             'nombre' => yii::t('common','Name'),
             'idCliente' => yii::t('common','Client'),
         ];
+    }
+
+    public function getCalendars($id){ 
+        $connection = Yii::$app->getDb();
+       
+        $query = (new \yii\db\Query())
+           ->select('id, nombre', 'idCliente')
+           ->from('click_calendar')
+           ->where(['idCliente' => $id])
+           ->all();
+        $retorno = $query;
+        return $retorno;
+    }
+
+    public function getNumCalendars($id){ 
+        $connection = Yii::$app->getDb();
+       
+        $query = (new \yii\db\Query())
+           ->select(['COUNT(*) AS count'])
+           ->from('click_calendar')
+           ->where(['idCliente' => $id])
+           ->all();
+        $retorno = $query[0]['count'];
+        return $retorno;
     }
 }

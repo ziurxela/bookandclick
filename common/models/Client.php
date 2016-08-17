@@ -63,4 +63,27 @@ class Client extends \yii\db\ActiveRecord
             'fecha_alta' => yii::t('common','Start Date'),
         ];
     }
+
+    public function getClientsId(){
+        $connection = Yii::$app->getDb();
+       
+        $query = (new \yii\db\Query())
+           ->select('id')
+           ->from('click_clients')
+           ->all();
+        $retorno = $query;
+        return $retorno;
+    }
+
+    public function getClientsNames($id){
+        $connection = Yii::$app->getDb();
+       
+        $query = (new \yii\db\Query())
+           ->select('nombre')
+           ->from('click_clients')
+           ->where(['id' => $id])
+           ->all();
+        $retorno = $query;
+        return $retorno;
+    }
 }

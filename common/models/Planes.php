@@ -44,4 +44,26 @@ class Planes extends \yii\db\ActiveRecord
             'nCalendarios' => yii::t('common','Number of Calendars'),
         ];
     }
+
+    public function getNumCalendarsByClient($idClient){
+        $connection = Yii::$app->getDb();
+       
+        $queryPlan = (new \yii\db\Query())
+           ->select(['plan'])
+           ->from('click_clients')
+           ->where(['id' => $idClient])
+           ->all();
+        $plan = $queryPlan[0]['plan'];
+        if ($plan == 0){
+            $nCalendarios = 0;
+        }else{
+            $queryNCalendar = (new \yii\db\Query())
+               ->select(['nCalendarios'])
+               ->from('click_planes')
+               ->where(['id' => $plan])
+               ->all();
+            $nCalendarios = $queryNCalendar[0]['nCalendarios'];
+        }
+        return $nCalendarios;
+    }
 }

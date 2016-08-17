@@ -1,11 +1,28 @@
 <?php
 
+use common\models\Calendar;
+use common\models\Planes;
 use yii\helpers\Html;
 
 $this->title = Yii::t('backend', 'Settings');
 $this->params['breadcrumbs'][] = $this->title;
+
+ $PlanesModel = new Planes();
+ $NumCalendar = $PlanesModel->getNumCalendarsByClient(Yii::$app->user->identity->client);
+ $CalendarModel = new Calendar();
+ $NumCalendarUsed = $CalendarModel->getNumCalendars(Yii::$app->user->identity->client);
+
 ?>
-	<div class="row">
+<?php if ($NumCalendar > $NumCalendarUsed || $NumCalendar == 0) { ?>
+<div class="col-md-3 col-md-offset-9">
+    <p>
+        <?php echo Html::a(Yii::t('backend', 'Create Calendar', [
+    		'modelClass' => 'Calendar',]), ['create'], ['class' => 'btn btn-success']) 
+    	?>
+    </p>
+</div>
+<?php } ?>
+	<!-- div class="row">
 		<div class="col-md-3 col-md-offset-1">
 			<div class="row">
 				<select id="first_day" class="form-control">
@@ -35,4 +52,4 @@ $this->params['breadcrumbs'][] = $this->title;
 			<small>This list is populated with events dynamically</small>
 			<ul id="eventlist" class="nav nav-list"></ul>
 		</div>
-	</div>
+	</div -->

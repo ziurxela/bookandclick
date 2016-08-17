@@ -85,3 +85,7 @@
         //e.stopPropagation();
     });
 }(jQuery));
+
+$(document).on('click', '.dropdown-menu li a', function() {
+    $('#datebox').val($(this).html());
+}); 

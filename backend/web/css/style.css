@@ -26,3 +26,6 @@ body .table {
     max-width: 90%;
     margin: 0 auto;
   }
+.setupNoDisplay {
+  display: none;
+}

@@ -329,7 +329,6 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     public function getClient($id){
-
         $query = (new \yii\db\Query())
             ->select('nombre')
             ->from('click_clients')

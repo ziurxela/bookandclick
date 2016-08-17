@@ -47,4 +47,8 @@ if (Yii::$app->user->can('administrator')){
     ]) ?>
 
 </div>
-<?php  } ?>
+<?php  
+}else{
+    echo Yii::t('common', 'Access denied.');
+ }
+ ?>

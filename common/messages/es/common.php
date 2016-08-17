@@ -18,6 +18,7 @@
  */
 return [
     'Account Number' => 'Número de Cuenta',
+    'Access denied.' => 'Acceso denegado.',
     'Address' => 'Dirección',
     'Article View' => 'Vista de Artículo',
     'Page View' => 'Vista de Página',

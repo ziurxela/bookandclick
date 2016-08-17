@@ -59,6 +59,7 @@ return [
     'Count' => 'Total',
     'Create' => 'Crear',
     'Create {modelClass}' => 'Crear {modelClass}',
+    'Create Calendar' => 'Crear Calendario',
     'Create User' => 'Crear Usuario',
     'Create Client' => 'Crear Cliente',
     'DB Type' => 'Tipo de Base de Datos',
