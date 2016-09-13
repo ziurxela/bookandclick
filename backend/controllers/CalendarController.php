@@ -21,9 +21,19 @@ class CalendarController extends Controller{
 
     public function actionSettings()
     {
-        return $this->render('settings', [
-            //'model' => $this->findModel($id),
-        ]);
+        $Cal = new Calendar();
+        $Calendars  = $Cal->getCalendars(Yii::$app->user->identity->client);
+        foreach ($Calendars as $Calendar) {
+            $id = $Calendar['id'];
+            if(isset($_POST[$id])){
+                $model = $this->findModel($id);
+
+                if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                    return $this->redirect(['settings']);
+                }
+            }
+        }        
+        return $this->render('settings');
     }
 
     public function actionCalendar($id)

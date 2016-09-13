@@ -22,10 +22,14 @@ body .table {
 /*# sourceMappingURL=style.map *//*# sourceMappingURL=style.map */
 
 
-#calendar {
+.tab-pane {
     max-width: 90%;
     margin: 0 auto;
   }
-.setupNoDisplay {
+.NoDisplay {
   display: none;
+}
+
+.mobiscroll{
+  cursor: pointer !important;
 }
