@@ -54,6 +54,14 @@ use yii\bootstrap\ActiveForm;
         </div>
     </div>
     <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-default btnAddRecess" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <label><?php echo Yii::t('backend', 'Recess staff'); ?></label>
+        </div>
+    </div>
+    <div class="row addRecess">
+    </div>
+    <div class="row">
         <div class="col-md-3 col-md-offset-9">
             <div class="form-group">
                 <?php echo Html::submitButton(Yii::t('backend', 'Update'), ['class' => 'btn btn-primary', 'name' => $model->id]);?>

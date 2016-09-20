@@ -8,9 +8,9 @@
         var fday = $('#firstday' + num).val();
         fday =  (fday != 0) ? parseInt(fday) : null;
         var f12 = ($('.format12').val() == 1)? true : false;
-        var timeStart = ($('.timeStart').val() === '00:00')? '08:00' : $('.timeStart').val(); 
-        var timeEnd = ($('.timeEnd').val() === '00:00')? '20:00': $('.timeEnd').val();
-        var timeInterval = ($('.timeInterval').val() === '0')? '30': $('.timeInterval').val();
+        var timeStart = $('.timeStart').val(); 
+        var timeEnd = ($('.timeEnd').val() === '00:00')? '24:00': $('.timeEnd').val();
+        var timeInterval = ($('.timeInterval').val() === '0')? '60': $('.timeInterval').val();
         //alert(timeInterval);
         var options = {
             events_source: '../json/events.json',
@@ -128,9 +128,16 @@ $(function () {
 
     wheels = [];
     wheels[0] = { 'Minutos': {} };
-    for (var i = 0; i < 60; i++){
-        wheels[0]['Minutos'][i] = (i < 10) ? ('0' + i) : i;
+    for (var i = 0; i < 31; i++){
+        var x = 0;
+        if (i < 5){ 
+            wheels[0]['Minutos'][i] = ('0' + i);
+        } else if ((i % 5) == 0 ){
+            wheels[0]['Minutos'][i] = i;  
+        }
     }
+    wheels[0]['Minutos'][60] = 60;
+    wheels[0]['Minutos'][120] = 120;
     $('.calendar-interval').scroller(
         $.extend(opt['interval'],{
             theme: 'android-ics light', 
@@ -143,3 +150,10 @@ $(function () {
         })
     );
 });
+
+//$(document).on('click', '.btnAddRecess', function() {
+//    $('.addRecess').append("<div class='col-md-4'>ola<?php echo 'ola q ase'; ?></div>");
+//    //$('.addRecess').append("<div class='col-md-4'><?php echo $form->field($model, 'timeStart')->textInput(['maxlength' => true, 'class' => 'form-control mobiscroll calendar-time']); ?></div>");
+//}); 
+
+

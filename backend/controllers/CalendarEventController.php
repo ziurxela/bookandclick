@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\CalendarEvent;
-use app\models\search\CalendarEventSearch;
+use common\models\CalendarEvent;
+use backend\search\CalendarEventSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -34,7 +34,7 @@ class CalendarEventController extends Controller
     {
         $searchModel = new CalendarEventSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
