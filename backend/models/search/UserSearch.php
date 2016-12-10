@@ -17,10 +17,17 @@ class UserSearch extends User
      */
     public function rules()
     {
-        return [
-            [['id', 'status', 'created_at', 'updated_at', 'logged_at'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email'], 'safe'],
-        ];
+        if (Yii::$app->user->can('administrator')){
+            return [
+                [['id', 'status', 'created_at', 'updated_at', 'logged_at'], 'integer'],
+                [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'client'], 'safe'],
+            ];
+        }else{
+            return [
+                [['id', 'status', 'created_at', 'updated_at', 'logged_at'], 'integer'],
+                [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email'], 'safe'],
+            ];
+        }
     }
 
     /**

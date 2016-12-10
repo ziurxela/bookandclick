@@ -1,18 +1,18 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
 use Yii;
-use common\models\CalendarEvent;
-use backend\search\CalendarEventSearch;
+use common\models\Event;
+use backend\models\search\EventSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CalendarEventController implements the CRUD actions for CalendarEvent model.
+ * EventController implements the CRUD actions for Event model.
  */
-class CalendarEventController extends Controller
+class EventController extends Controller
 {
     public function behaviors()
     {
@@ -27,14 +27,14 @@ class CalendarEventController extends Controller
     }
 
     /**
-     * Lists all CalendarEvent models.
+     * Lists all Event models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CalendarEventSearch();
+        $searchModel = new EventSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -42,7 +42,7 @@ class CalendarEventController extends Controller
     }
 
     /**
-     * Displays a single CalendarEvent model.
+     * Displays a single Event model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class CalendarEventController extends Controller
     }
 
     /**
-     * Creates a new CalendarEvent model.
+     * Creates a new Event model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new CalendarEvent();
+        $model = new Event();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class CalendarEventController extends Controller
     }
 
     /**
-     * Updates an existing CalendarEvent model.
+     * Updates an existing Event model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class CalendarEventController extends Controller
     }
 
     /**
-     * Deletes an existing CalendarEvent model.
+     * Deletes an existing Event model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,18 +104,18 @@ class CalendarEventController extends Controller
     }
 
     /**
-     * Finds the CalendarEvent model based on its primary key value.
+     * Finds the Event model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return CalendarEvent the loaded model
+     * @return Event the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = CalendarEvent::findOne($id)) !== null) {
+        if (($model = Event::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }
+    }    
 }

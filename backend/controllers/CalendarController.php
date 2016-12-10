@@ -9,7 +9,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-
 /**
  * ArticleController implements the CRUD actions for Article model.
  */
@@ -86,7 +85,7 @@ class CalendarController extends Controller{
             ]);
         }
     }
-
+    
     protected function findModel($id)
     {
         if (($model = Calendar::findOne($id)) !== null) {

@@ -128,7 +128,7 @@ $(function () {
 
     wheels = [];
     wheels[0] = { 'Minutos': {} };
-    for (var i = 0; i < 31; i++){
+    for (var i = 0; i <= 20; i++){
         var x = 0;
         if (i < 5){ 
             wheels[0]['Minutos'][i] = ('0' + i);
@@ -136,6 +136,7 @@ $(function () {
             wheels[0]['Minutos'][i] = i;  
         }
     }
+    wheels[0]['Minutos'][30] = 30;
     wheels[0]['Minutos'][60] = 60;
     wheels[0]['Minutos'][120] = 120;
     $('.calendar-interval').scroller(
@@ -151,9 +152,40 @@ $(function () {
     );
 });
 
-//$(document).on('click', '.btnAddRecess', function() {
-//    $('.addRecess').append("<div class='col-md-4'>ola<?php echo 'ola q ase'; ?></div>");
-//    //$('.addRecess').append("<div class='col-md-4'><?php echo $form->field($model, 'timeStart')->textInput(['maxlength' => true, 'class' => 'form-control mobiscroll calendar-time']); ?></div>");
-//}); 
+$(document).on('click', '.btnDeleteRecess', function() {
+    var confirmar = confirm("¿Está seguro de eliminar este elemento?"); 
+    if (confirmar){
+        
+    }
+}); 
 
+//$(document).on('click', '.btnAddRecess', function(event){
+//    var Titulo = $("#titulo").val();
+//    var Inicio = $("#start").val();
+//    var End = $("#end").val();
+//    
+//    if (Titulo != "" && Inicio != "" && End != ""){
+//        $('#Recess' + idCalendar).append('<tr><td>' + Titulo + '</td><td>' + Inicio + '</td><td>' + End + '</td><td><button class="btn btn-default btnDeleteRecess" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button></td></tr>');
+//        $("#titulo").val('');
+//        $("#start").val('');
+//        $("#end").val('');
+//    }
+//});
 
+function AddNewRecess(idCalendar){
+    var Titulo = $("#titulo" + idCalendar).val();
+    var Inicio = $("#start" + idCalendar).val();
+    var End = $("#end" + idCalendar).val();
+
+/*    if (Inicio > End){
+        return alert()
+    }
+*/
+    if (Titulo != "" && Inicio != "" && End != ""){
+        $('#Recess' + idCalendar).append('<tr><td>' + Titulo + '</td><td>' + Inicio + '</td><td>' + End + '</td><td><button class="btn btn-default btnDeleteRecess" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button></td></tr>');
+        $("#titulo" + idCalendar).val('');
+        $("#start" + idCalendar).val('');
+        $("#end" + idCalendar).val('');
+    }
+    return true;
+}

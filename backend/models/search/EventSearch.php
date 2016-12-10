@@ -1,16 +1,16 @@
 <?php
 
-namespace app\models\search;
+namespace backend\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\CalendarEvent;
+use common\models\Event;
 
 /**
- * CalendarEventSearch represents the model behind the search form about `app\models\CalendarEvent`.
+ * EventSearch represents the model behind the search form about `common\models\Event`.
  */
-class CalendarEventSearch extends CalendarEvent
+class EventSearch extends Event
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CalendarEventSearch extends CalendarEvent
     public function rules()
     {
         return [
-            [['id', 'client'], 'integer'],
-            [['titulo', 'descripcion', 'fechaCreacion'], 'safe'],
+            [['id', 'calendar', 'customer'], 'integer'],
+            [['titulo', 'descripcion', 'fechaCreacion', 'eventDate', 'start', 'end'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CalendarEventSearch extends CalendarEvent
      */
     public function search($params)
     {
-        $query = CalendarEvent::find();
+        $query = Event::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -53,8 +53,12 @@ class CalendarEventSearch extends CalendarEvent
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'client' => $this->client,
+            'calendar' => $this->calendar,
             'fechaCreacion' => $this->fechaCreacion,
+            'customer' => $this->customer,
+            'eventDate' => $this->eventDate,
+            'start' => $this->start,
+            'end' => $this->end,
         ]);
 
         $query->andFilterWhere(['like', 'titulo', $this->titulo])

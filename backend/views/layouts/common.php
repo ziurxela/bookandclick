@@ -145,7 +145,7 @@ $bundle = BackendAsset::register($this);
                             'options'=>['class'=>'treeview'],
                             'items' =>[
                                 ['label'=>Yii::t('backend', 'Settings Calendar'), 'url'=>['/calendar/settings'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                
+                                 ['label'=>'Event', 'url'=>['/event/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
                             ],
                         ],
                         [

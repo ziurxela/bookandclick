@@ -320,7 +320,7 @@ class User extends ActiveRecord implements IdentityInterface
             $c[]=$list['nombre'];
         }
 
-        $clients = array('Book&click');
+        $clients = array('');
         
         for($i = 0; $i < count($c); $i++){
             array_push($clients, $c[$i]);                                                                  

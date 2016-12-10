@@ -58,7 +58,7 @@ $Calendars = $CalendarModel->getCalendars(Yii::$app->user->identity->client);
 	        'model' => $model,
 	    ]) ?>
 	</div>
-
+	
 	</div>
 	<?php $x++; } ?>
 </div>	

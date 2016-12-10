@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\CalendarEventSearch */
+/* @var $searchModel backend\models\search\EventSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Calendar Events');
+$this->title = Yii::t('backend', 'Events');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="calendar-event-index">
+<div class="event-index">
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?php echo Html::a(Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Calendar Event',
+    'modelClass' => 'Event',
 ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
@@ -27,10 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'client',
+            'calendar',
             'titulo',
             'descripcion',
             'fechaCreacion',
+            'customer',
+            'eventDate',
+            'start',
+            'end',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
