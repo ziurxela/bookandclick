@@ -117,5 +117,34 @@ class EventController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
-    }    
+    } 
+
+    public function actionSample() {
+        if (Yii::$app->request->isAjax){
+            //$data = $_POST["data"]; 
+            $data = Yii::$app->request->post();
+
+            $calendar = explode(":", $data["idCalendar"]);
+            $titulo = explode(":", $data["titulo"]);
+            $inicio = explode(":", $data["inicio"]);
+            $end = explode(":", $data["end"]);
+
+            $model = new Event();
+            $customer = Yii::$app->user->identity->client;
+            
+
+            $model->calendar = $calendar[0];
+            $model->titulo = $titulo[0];
+            $model->descripcion = "Personal Recess";
+            $model->fechaCreacion = date("d/m/Y");
+            $model->customer = $customer;
+            //'eventDate' => 'Fecha del Evento', lo dejamos por defecto
+            $model->start = $inicio[0];
+            $model->end = $end[0];
+
+
+        return null;    
+        //throw new NotFoundHttpException($data);
+        }
+    }  
 }

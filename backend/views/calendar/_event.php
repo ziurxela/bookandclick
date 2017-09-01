@@ -17,9 +17,10 @@ $dataProvider = $EventModel->getRecessByClient($idCalendar);
 ?>
 
 <h4><?php echo Yii::t('backend', 'Rest intervals'); ?></h4>
-<input class="idCalendar" type="hidden" value=<?php echo $idCalendar; ?> >
 <div class="panel panel-default">
 	<div class="panel-body">
+		<input id="url" type="hidden" value= <?php echo Yii::$app->request->baseUrl .'/event/sample' ?> >
+		<input id="ValidacionHora" type="hidden" value="<?php echo yii::t('backend','Start time must be less than the end time'); ?>">
   		<table id= <?php echo "Recess". $idCalendar; ?> class="table table-hover">
     		<thead>
       			<tr>
@@ -36,16 +37,17 @@ $dataProvider = $EventModel->getRecessByClient($idCalendar);
 		    		<td><input id=<?php echo "end". $idCalendar; ?> type="text" class="form-control mobiscroll calendar-time" name="end"></td>
 		    		<td>
 		    			<?php
-		    				echo Html::button('<i class="fa fa-plus" aria-hidden="true"></i>', [ 'class' => 'btn btn-default btnAddRecess', 'onclick' => $EventModel->addRecess($idCalendar) ])
+		    				echo '<button class="btn btn-default btnAddRecess" type="button" onclick="AddNewRecess(' . $idCalendar . ');"><i class="fa fa-plus" aria-hidden="true"></i></button>';
 		    			?>
 		    		</td>
 		    	</tr>
 		    	<?php 
 		    	foreach ($dataProvider as $dp) { 
-		    		echo    '<tr>'.
-		    					'<td>' . $dp['titulo'] . '</td>'.
-		    					'<td>' . $dp['start']. '</td>'.
-		    					'<td>' . $dp['end'] . '</td>'.
+		    		echo    '<tr id="DataRecess' . $dp['id'] . '">'.
+		    					'<input id="id' . $dp['id'] . '" type="hidden" value="' . $dp['id'] . '" >'.
+		    					'<td id="titulo' . $dp['id'] . '">' . $dp['titulo'] . '</td>'.
+		    					'<td id="start' . $dp['id'] . '">' . $dp['start']. '</td>'.
+		    					'<td id="end' . $dp['id'] . '">' . $dp['end'] . '</td>'.
 		    					'<td><button class="btn btn-default btnDeleteRecess" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button></td>'.
 		    				'</tr>'; 
 				} ?>

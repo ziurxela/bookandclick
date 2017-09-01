@@ -159,33 +159,38 @@ $(document).on('click', '.btnDeleteRecess', function() {
     }
 }); 
 
-//$(document).on('click', '.btnAddRecess', function(event){
-//    var Titulo = $("#titulo").val();
-//    var Inicio = $("#start").val();
-//    var End = $("#end").val();
-//    
-//    if (Titulo != "" && Inicio != "" && End != ""){
-//        $('#Recess' + idCalendar).append('<tr><td>' + Titulo + '</td><td>' + Inicio + '</td><td>' + End + '</td><td><button class="btn btn-default btnDeleteRecess" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button></td></tr>');
-//        $("#titulo").val('');
-//        $("#start").val('');
-//        $("#end").val('');
-//    }
-//});
-
 function AddNewRecess(idCalendar){
     var Titulo = $("#titulo" + idCalendar).val();
     var Inicio = $("#start" + idCalendar).val();
     var End = $("#end" + idCalendar).val();
 
-/*    if (Inicio > End){
-        return alert()
-    }
-*/
+   
     if (Titulo != "" && Inicio != "" && End != ""){
-        $('#Recess' + idCalendar).append('<tr><td>' + Titulo + '</td><td>' + Inicio + '</td><td>' + End + '</td><td><button class="btn btn-default btnDeleteRecess" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button></td></tr>');
-        $("#titulo" + idCalendar).val('');
-        $("#start" + idCalendar).val('');
-        $("#end" + idCalendar).val('');
+        if (Inicio >= End){
+            //buscar manera de enviarlo a php
+            return alert($('#ValidacionHora').val());
+        }
+        var frmSerialized = {
+                                idCalendar: idCalendar,
+                                titulo: Titulo,
+                                inicio: Inicio,
+                                end: End
+                            };
+        $.ajax({
+                url: $("#url").val(),
+                type: 'POST',
+                 data: frmSerialized,
+                 success: function(data) {
+                    $("#titulo" + idCalendar).val('');
+                    $("#start" + idCalendar).val('');
+                    $("#end" + idCalendar).val('');
+                    alert("Success!" + data.date); 
+                    $('#Recess' + idCalendar).append('<tr><td>' + Titulo + '</td><td>' + Inicio + '</td><td>' + End + '</td><td><button class="btn btn-default btnDeleteRecess" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button></td></tr>');
+                 },
+                 error: function(){
+                    alert("error de envio ajax");
+                 }
+             });
     }
-    return true;
+    //return true;
 }

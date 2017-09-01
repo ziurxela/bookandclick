@@ -69,21 +69,17 @@ class Event extends \yii\db\ActiveRecord
     }
 
     public function getModel($data){
-        $EventModel = new event();
+        $EventModel = new Event();
         $EventModel->id = $data['id'];
         $EventModel->isNewRecord = false;
          return $EventModel;
     }
 
-    public function addRecess($idCalendar){
-        $Recess = 'ola q ase';//getRecess($idCalendar);
-
-        echo '<script language="javascript">alert("'. $Recess .'");</script>';
-        return true;
-    }
-
-    public function getRecess($idCalendar){
+    public function addRecess($event){
         
-        return  '(function ( $event ) { AddNewRecess('. $idCalendar .'); })();';
+        
+
+
+        return  "function(){ alert('ola q aseeee');}";
     }
 }

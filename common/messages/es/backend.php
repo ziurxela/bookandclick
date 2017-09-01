@@ -148,6 +148,7 @@ return [
     'Source Message' => 'Mensaje fuente',
     'Spanish' => 'Español',
     'Start' => 'Inicio',
+    'Start time must be less than the end time' => 'La hora de inicio debe ser inferior a la hora final',
     'Static pages' => 'Páginas estáticas',
     'System' => 'Sistema',
     'System Date' => 'Fecha del sistema',
