@@ -149,7 +149,7 @@ if(!String.prototype.formatNum) {
 		first_day: 2,
 		holidays: {
 			// January 1
-			//'01-01': "New Year's Day",
+			//'09-04': "New Year's Day",
 			// Third (+3*) Monday (1) in January (01)
 			//'01+3*1': "Birthday of Dr. Martin Luther King, Jr.",
 			// Third (+3*) Monday (1) in February (02)
